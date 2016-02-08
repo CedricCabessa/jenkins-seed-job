@@ -1,11 +1,15 @@
 job('DSL-Tutorial-1-Test') {
+    description("""This a wonderful project
+With a multiline description""")
     scm {
-        git('git://github.com/jgritman/aws-sdk-test.git')
+        git('git://github.com/CedricCabessa/lightduino')
     }
     triggers {
-        scm('*/15 * * * *')
+        scm('*/5 * * * *')
     }
     steps {
-        maven('-e clean test')
+        shell("""date > output
+echo 'hello world'
+""")
     }
 }
