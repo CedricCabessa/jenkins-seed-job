@@ -28,3 +28,23 @@ job('myjob') {
         git("git://github.com/foo/bar")
     }
 }
+
+
+matrixJob("my multi job") {
+    axes("label", "linnode", "winnode", "macnode")
+    scm {
+        git {
+            remote {
+                url('git://github.com/CedricCabessa/lightduino')
+                branch('${sha1}')
+                refspec("+refs/pull/*:refs/remotes/origin/pr/*")
+            }
+        }
+    }
+    triggers {
+        pullRequest {
+            cron('H/5 * * * *')
+            permitAll()
+        }
+    }
+}
