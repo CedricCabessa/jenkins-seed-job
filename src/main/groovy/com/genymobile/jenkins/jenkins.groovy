@@ -1,6 +1,9 @@
+package com.genymobile.jenkins;
+
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.jobs.MatrixJob
+
 
 class MasterMatrixBuilder {
     String name

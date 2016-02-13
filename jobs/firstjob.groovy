@@ -1,3 +1,4 @@
+import com.genymobile.jenkins.MasterMatrixBuilder;
 
 job('DSL-Tutorial-1-Test') {
     description("""This a wonderful project
