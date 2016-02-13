@@ -21,3 +21,8 @@ echo 'hello world'
         archiveArtifacts('output')
     }
 }
+
+job('myjob') {
+    description("""A cool description""")
+    scm("git://github.com")
+}
