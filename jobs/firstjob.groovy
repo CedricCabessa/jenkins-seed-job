@@ -31,7 +31,9 @@ job('myjob') {
 
 
 matrixJob("my multi job") {
-    axes("label", "linnode", "winnode", "macnode")
+    axes {
+        label("label", "linnode", "winnode", "macnode")
+    }
     scm {
         git {
             remote {
