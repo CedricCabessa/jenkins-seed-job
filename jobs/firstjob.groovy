@@ -24,5 +24,7 @@ echo 'hello world'
 
 job('myjob') {
     description("""A cool description""")
-    scm("git://github.com")
+    scm {
+        git("git://github.com/foo/bar")
+    }
 }
