@@ -18,3 +18,5 @@ repositories {
 dependencies {
     compile 'org.jenkins-ci.plugins:job-dsl-core:1.42'
 }
+
+tasks.getByName('test').inputs.files(sourceSets.jobs.groovy.srcDirs)
