@@ -1,4 +1,4 @@
-import com.genymobile.jenkins.MultiOsBuilder;
+import com.genymobile.jenkins.MultiOsBuilderOnDemand;
 
 def genymotion_soft_on_demand_description =
 '''On-demand dedicated job. You can build with both parameters: branch and target (regular|MVP)

@@ -1,3 +1,5 @@
+package com.genymobile.jenkins;
+
 import javaposse.jobdsl.dsl.DslFactory
 import javaposse.jobdsl.dsl.jobs.MatrixJob
 
