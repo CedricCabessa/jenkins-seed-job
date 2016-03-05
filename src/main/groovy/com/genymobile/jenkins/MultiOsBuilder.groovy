@@ -59,8 +59,10 @@ class MultiOsBuilder {
             steps {
                 shell(buildScript)
             }
-            publishers {
-                archiveArtifacts(archiveArtifacts)
+            if (archiveArtifacts) {
+                publishers {
+                    archiveArtifacts(archiveArtifacts)
+                }
             }
         }
     }
