@@ -33,8 +33,19 @@ def job = new MultiOsBuilder(
         description: genymotion_soft_on_demand_description,
         giturl: "git@github.com:Genymobile/genymotion-build.git",
         buildScript:genymotion_soft_on_demand_script,
-        //archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
+        archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
 ).build(this);
 job.parameters {
     choiceParam("TARGET", ["MVP", "regular"], "Choose the mode to build: MVP contains share features, regular is production")
+}
+job.publishers {
+    archiveXUnit {
+        qTestLib {
+            pattern("**/result.xml")
+            skipNoTestFiles: true
+            failedThresholds {
+                failure: 1
+            }
+        }
+    }
 }
