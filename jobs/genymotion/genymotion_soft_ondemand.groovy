@@ -1,3 +1,5 @@
+package genymotion
+
 import com.genymobile.jenkins.MultiOsBuilderOnDemand;
 
 def genymotion_soft_on_demand_description =
@@ -31,7 +33,7 @@ fi
 def job = new MultiOsBuilderOnDemand(
         name: "genymotion-soft-on-demand-groovy",
         description: genymotion_soft_on_demand_description,
-        giturl: "git@github.com:Genymobile/genymotion-build.git",
+        giturl: "git@github.com:Genymobile/genymotion-softs.git",
         buildScript:genymotion_soft_on_demand_script,
         archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
 ).build(this);
