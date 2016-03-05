@@ -51,11 +51,9 @@ class DockerBuilder {
                 }
 
             }
+            label dockername
             triggers {
                 scm pollScmSchedule
-                urlTrigger {
-                    restrictToLabel dockername
-                }
             }
             steps {
                 shell buildScript
