@@ -38,13 +38,15 @@ def job = new MultiOsBuilderOnDemand(
 job.parameters {
     choiceParam("TARGET", ["MVP", "regular"], "Choose the mode to build: MVP contains share features, regular is production")
 }
+
 job.publishers {
     archiveXUnit {
-        qTestLib {
+         qTestLib {
             pattern("**/result.xml")
-            skipNoTestFiles: true
+            skipNoTestFiles true
+            deleteOutputFiles false
             failedThresholds {
-                failure: 1
+                failure 1
             }
         }
     }

@@ -35,9 +35,9 @@ class MultiOsBuilderOnDemand {
             scm {
                 git {
                     remote {
-                        url(giturl)
-                        branch('$branch')
-                        credentials("7bf7f643-0dea-46b4-a1fc-42387dd300e9") //fixme
+                        url giturl
+                        branch '$branch'
+                        credentials "7bf7f643-0dea-46b4-a1fc-42387dd300e9" //fixme
                     }
                     clean()
                 }
@@ -51,11 +51,11 @@ class MultiOsBuilderOnDemand {
                 label("label", "linnode", "winnode", "macnode")
             }
             steps {
-                shell(buildScript)
+                shell buildScript
             }
             if (archiveArtifacts) {
                 publishers {
-                    archiveArtifacts(archiveArtifacts)
+                    archiveArtifacts archiveArtifacts
                 }
             }
         }
