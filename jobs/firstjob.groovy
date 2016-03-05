@@ -36,5 +36,5 @@ def job = new MultiOsBuilder(
         archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
 ).build(this);
 job.parameters {
-    choiceParam("TARGET", ["MVP", "regular"])
+    choiceParam("TARGET", ["MVP", "regular"], "Choose the mode to build: MVP contains share features, regular is production")
 }

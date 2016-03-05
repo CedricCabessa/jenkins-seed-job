@@ -50,7 +50,7 @@ class MultiOsBuilder {
                 scm pollScmSchedule
             }
             parameters {
-                stringParam("branch", "master")
+                stringParam("branch", "master", "Branch to build")
             }
             axes {
                  //fixme:
