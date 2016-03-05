@@ -5,13 +5,27 @@ import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.jobs.MatrixJob
 
 
-class MasterMatrixBuilder {
+class MultiOsBuilder {
+    /**
+     * Job name
+     */
     String name
+    /**
+     * job description
+     */
     String description
+    /**
+     * git url (eg: git@github:Genymobile/genymotion-softs)
+     */
     String giturl
+    /**
+     * script used for build. You can use multiline string with """..."""
+     */
     String buildScript
+    /**
+     * Path to artefact to archive
+     */
     String archiveArtifacts
-    String gitBranch = 'master'
     String pollScmSchedule = 'H/5 * * * *'
     int artefactToKeep = 10
 
@@ -25,8 +39,8 @@ class MasterMatrixBuilder {
                 git {
                     remote {
                         url(giturl)
-                        branch(gitBranch)
-                        credentials("user")
+                        branch('$branch')
+                        credentials("user") //fixme
                     }
                     clean()
                 }
@@ -35,7 +49,11 @@ class MasterMatrixBuilder {
             triggers {
                 scm pollScmSchedule
             }
+            parameters {
+                stringParam("branch", "master")
+            }
             axes {
+                 //fixme:
                 label("label", "linnode", "winnode", "macnode")
             }
             steps {
