@@ -1,12 +1,12 @@
 import com.genymobile.jenkins.MultiOsBuilder;
 
-def genymotion_soft_on_demand_description = '''
-On-demand dedicated job. You can build with both parameters: branch and target (regular|MVP)
+def genymotion_soft_on_demand_description =
+'''On-demand dedicated job. You can build with both parameters: branch and target (regular|MVP)
 This configuration is for Linux, Mac OSX and Windows
 '''
 
-def genymotion_soft_on_demand_script = '''
-# Git sync
+def genymotion_soft_on_demand_script =
+'''# Git sync
 git submodule sync
 git submodule update --init --recursive --force
 
@@ -28,10 +28,13 @@ if [ "$OS_TYPE" = "linux64" ]; then
 fi
 '''
 
-new MultiOsBuilder(
+def job = new MultiOsBuilder(
         name: "genymotion-soft-on-demand-groovy",
         description: genymotion_soft_on_demand_description,
         giturl: "git@github.com:Genymobile/genymotion-build.git",
         buildScript:genymotion_soft_on_demand_script,
         archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
 ).build(this);
+job.parameters {
+    choiceParam("TARGET", ["MVP", "regular"])
+}
