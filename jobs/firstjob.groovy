@@ -28,7 +28,7 @@ if [ "$OS_TYPE" = "linux64" ]; then
 fi
 '''
 
-def job = new MultiOsBuilder(
+def job = new MultiOsBuilderOnDemand(
         name: "genymotion-soft-on-demand-groovy",
         description: genymotion_soft_on_demand_description,
         giturl: "git@github.com:Genymobile/genymotion-build.git",

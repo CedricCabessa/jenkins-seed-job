@@ -1,11 +1,7 @@
-package com.genymobile.jenkins;
-
 import javaposse.jobdsl.dsl.DslFactory
-import javaposse.jobdsl.dsl.Job
 import javaposse.jobdsl.dsl.jobs.MatrixJob
 
-
-class MultiOsBuilder {
+class MultiOsBuilderOnDemand {
     /**
      * Job name
      */
@@ -26,11 +22,6 @@ class MultiOsBuilder {
      * Path to artefact to archive
      */
     String archiveArtifacts
-    /**
-     * branch to build (default origin/master)
-     */
-    String gitbranch = "origin/master"
-    String pollScmSchedule = 'H/5 * * * *'
     int artefactToKeep = 10
 
     MatrixJob build(DslFactory dslFactory) {
@@ -43,18 +34,18 @@ class MultiOsBuilder {
                 git {
                     remote {
                         url(giturl)
-                        branch(gitbranch)
+                        branch('$branch')
                         credentials("7bf7f643-0dea-46b4-a1fc-42387dd300e9") //fixme
                     }
                     clean()
                 }
 
             }
-            triggers {
-                scm pollScmSchedule
+            parameters {
+                stringParam("branch", "origin/master", "Branch to build")
             }
             axes {
-                 //fixme:
+                //fixme:
                 label("label", "linnode", "winnode", "macnode")
             }
             steps {
