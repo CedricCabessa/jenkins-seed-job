@@ -27,13 +27,10 @@ if [ "$OS_TYPE" = "linux64" ]; then
 fi
 """
 
-def job = new MultiOsBuilder(
+new MultiOsBuilder(
         name: "genymotion-soft-on-demand-groovy",
         description: genymotion_soft_on_demand_description,
         giturl: "git@github.com:Genymobile/genymotion-build.git",
         buildScript:genymotion_soft_on_demand_script,
         archiveArtifacts: "build/*.bin,build/*.dmg,build/genymotion-*.exe"
-);
-
-def matrix = job.build(this);
-
+).build(this);
