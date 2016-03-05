@@ -55,8 +55,10 @@ class DockerBuilder {
             triggers {
                 scm pollScmSchedule
             }
-            steps {
-                shell buildScript
+            if (buildScript) {
+                steps {
+                    shell buildScript
+                }
             }
             if (archiveArtifacts) {
                 publishers {

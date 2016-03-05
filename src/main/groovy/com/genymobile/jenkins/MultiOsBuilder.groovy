@@ -57,8 +57,10 @@ class MultiOsBuilder {
                  //fixme:
                 label("label", "linnode", "winnode", "macnode")
             }
-            steps {
-                shell buildScript
+            if (buildScript) {
+                steps {
+                    shell buildScript
+                }
             }
             if (archiveArtifacts) {
                 publishers {
