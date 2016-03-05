@@ -1,10 +1,11 @@
 import com.genymobile.jenkins.MultiOsBuilder;
 
-def genymotion_soft_on_demand_description = """
+def genymotion_soft_on_demand_description = '''
 On-demand dedicated job. You can build with both parameters: branch and target (regular|MVP)
 This configuration is for Linux, Mac OSX and Windows
-"""
-def genymotion_soft_on_demand_script = """
+'''
+
+def genymotion_soft_on_demand_script = '''
 # Git sync
 git submodule sync
 git submodule update --init --recursive --force
@@ -25,7 +26,7 @@ if [ "$OS_TYPE" = "linux64" ]; then
         cppcheck -i build/ -i libs/librendering/qemu -i libs/libvmdeploy/lib/vbox/4.3 -i libs/libvmdeploy/lib/vbox/5.0 --enable=all --inconclusive --xml --xml-version=2 . 2> cppcheck.xml
     fi
 fi
-"""
+'''
 
 new MultiOsBuilder(
         name: "genymotion-soft-on-demand-groovy",

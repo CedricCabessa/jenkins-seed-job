@@ -19,7 +19,7 @@ class MultiOsBuilder {
      */
     String giturl
     /**
-     * script used for build. You can use multiline string with """..."""
+     * script used for build. You can use multiline string with '''...'''
      */
     String buildScript
     /**
